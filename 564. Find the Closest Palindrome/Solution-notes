@@ -1,0 +1,96 @@
+class Solution {
+public:
+    vector<string> val{"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+    int ans = INT_MAX;
+    int ansDiff = INT_MAX;
+    string nearestPalindromic(string n) {
+        if(n == "0") return "";
+        if(n.size() == 1) {
+            return to_string(stoi(n) - 1);
+        }
+        // subhahu - 03:28
+
+        // brute force
+        // 27 / 217 testcases passed - issuew with lesser length
+        // dfs is bad because we don't know how far we have to go, i misunderstood the question.
+        // calculate how far we can go......
+        // how to decide when to stop when we use dfs in depth
+        bool isOdd = n.length() % 2;
+        unordered_map<int, bool> hash;
+        dfs(n.length(), stoi(n), isOdd, hash, "");
+        return to_string(ans);
+    }
+
+    void dfs(int sz, int n, bool isOdd, unordered_map<int, bool> &hash, string num) {
+        if(num.length() > 0) {
+            string revStr = num;
+            reverse(revStr.begin(), revStr.end());
+            // update final cut based on num lengh
+            // updaed with both try odd and even
+            // also updated to check final num should not be equal to given num.
+            long long finalEvenNum = stoll(num + revStr)*1ll;
+            long long finalOddNum = stoll(num + revStr.substr(1))*1ll;
+            // cout << finalEvenNum << endl;
+            // cout << finalOddNum << endl;
+            if(abs(n-finalEvenNum) <= ansDiff && finalEvenNum != n) {
+                if(abs(n-finalEvenNum) == ansDiff) {
+                    // ans = min(finalEvenNum, ans);
+                    if(ans > finalEvenNum) {
+                        ans = finalEvenNum;
+                    }
+                }
+                else {
+                    ans = finalEvenNum;
+                }
+                
+                ansDiff = abs(n-finalEvenNum);
+                
+            }
+            if(abs(n-finalOddNum) <= ansDiff && finalOddNum != n) {
+                if(abs(n-finalOddNum) == ansDiff) {
+                    // ans = min(finalOddNum, ans);
+                    if(ans > finalOddNum) {
+                        ans = finalOddNum;
+                    }
+                }
+                else {
+                    ans = finalOddNum;
+                }
+                
+                ansDiff = abs(n-finalOddNum);
+                
+            }
+
+            if(num.length() > sz-1) return;
+            
+        }
+
+        // if(num.length() == sz/2 + isOdd)
+        //         return;
+
+        // sz loop
+        for(int i = 0 ; i <= 9 ; i++) {
+            // updated code to make sure that number does not start with zero.
+            if(num.length() == 0 && val[i] == "0") continue;
+            // if(hash[i]) continue;
+            // hash[i] = true;
+            dfs(sz, n, isOdd, hash, num + val[i]);
+            // hash[i] = false;
+        }
+    }
+
+    int stringToNumber(string a) {
+        int num = 0;
+        for(int i = 0 ; i < a.length() ; i++) {
+            num = num*10 + (a[i]-'0');
+        }
+
+        return num;
+    }
+};
+
+// after watchling solution
+
+// 1. find ceil and floor palindrome of given number and then compare
+// 2. ue BFS
+// 3 check aLL MATH Solution
