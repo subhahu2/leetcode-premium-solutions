@@ -1,4 +1,4 @@
-# leetcode-premium-solutions
+# leetcode-premium-solutions (also there is a leetcode plugin available which works free as leetcode premium)
 
 Need to redo to understand logic and create generic formual..
 
