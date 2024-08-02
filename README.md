@@ -15,3 +15,8 @@ Need to continue with this. - https://leetcode.com/problems/check-if-the-rectang
 02 August 2024
 https://leetcode.com/problems/maximum-hamming-distances/description/
 Not able to sovled- need to check all solutino and understnd why i was nto able to solve thss..
+
+
+02 August 2024
+https://leetcode.com/problems/find-longest-self-contained-substring/description/
+Not able to solved - need to check all solutino and understnd why i was nto able to solve thss..
