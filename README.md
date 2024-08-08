@@ -25,3 +25,9 @@ Not able to solved - need to check all solutino and understnd why i was nto able
 
 https://leetcode.com/problems/maximum-number-of-removal-queries-that-can-be-processed-i/submissions/1348148465/
 able to write code, but not getting 100%, Also Need to see other solutions, (may be for other i may get TLE..)
+
+
+
+09 August 2024
+https://leetcode.com/problems/minimum-number-of-coins-for-fruits-ii/submissions/1349317524/
+Need to conintue , stopped after 30 mins.
